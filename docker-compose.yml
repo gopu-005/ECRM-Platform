@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   # ── PostgreSQL ────────────────────────────────────────────────────────────
   postgres:
@@ -43,7 +41,9 @@ services:
       dockerfile: Dockerfile
     container_name: ecrm_api
     restart: unless-stopped
-    env_file: .env
+    env_file:
+      - path: .env
+        required: false
     environment:
       - POSTGRES_HOST=postgres
       - REDIS_HOST=redis
@@ -65,7 +65,9 @@ services:
       dockerfile: Dockerfile
     container_name: ecrm_worker
     restart: unless-stopped
-    env_file: .env
+    env_file:
+      - path: .env
+        required: false
     environment:
       - POSTGRES_HOST=postgres
       - REDIS_HOST=redis
@@ -85,7 +87,9 @@ services:
       dockerfile: Dockerfile
     container_name: ecrm_beat
     restart: unless-stopped
-    env_file: .env
+    env_file:
+      - path: .env
+        required: false
     environment:
       - POSTGRES_HOST=postgres
       - REDIS_HOST=redis
@@ -103,7 +107,9 @@ services:
       dockerfile: Dockerfile
     container_name: ecrm_flower
     restart: unless-stopped
-    env_file: .env
+    env_file:
+      - path: .env
+        required: false
     environment:
       - POSTGRES_HOST=postgres
       - REDIS_HOST=redis
@@ -121,7 +127,9 @@ services:
       dockerfile: Dockerfile
     container_name: ecrm_frontend
     restart: unless-stopped
-    env_file: .env
+    env_file:
+      - path: .env
+        required: false
     ports:
       - "3000:3000"
     volumes:
